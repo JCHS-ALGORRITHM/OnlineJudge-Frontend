@@ -14,8 +14,6 @@ DeleteTagModal.propType = {
 };
 
 export default function DeleteTagModal({ isOpen, setOpen, tag, onDeleteTag }) {
-  const [newTag, setNewTag] = useState('');
-
   const [isProcess, setProcess] = useState(false);
 
   const handleDeleteTag = () => {

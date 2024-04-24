@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import axios from '../../utils/axios.js';
 import Cookies from '../../utils/Cookies.js';
 
 export default function LoginPage() {
-  const navigate = useNavigate();
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
