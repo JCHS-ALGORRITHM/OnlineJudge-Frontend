@@ -49,6 +49,24 @@ export default function Header() {
     })();
   }, []);
 
+  const _setLectureDropdownOpen = (value) => {
+    setLectureDropdownOpen(value)
+    setAdminDropDownOpen(false)
+    setUserMenuOpen(false)
+  }
+
+  const _setAdminDropDownOpen = (value) => {
+    setLectureDropdownOpen(false)
+    setAdminDropDownOpen(value)
+    setUserMenuOpen(false)
+  }
+
+  const _setUserMenuOpen = (value) => {
+    setLectureDropdownOpen(false)
+    setAdminDropDownOpen(false)
+    setUserMenuOpen(value)
+  }
+
   if (user.loading) return <></>;
 
   return (
@@ -63,7 +81,7 @@ export default function Header() {
             <li>
               <button
                 className="text-white hover:underline flex items-center"
-                onClick={() => setLectureDropdownOpen(!isLectureDropdownOpen)}
+                onClick={() => _setLectureDropdownOpen(!isLectureDropdownOpen)}
               >
                 내 수업&nbsp;
                 {user.name.length !== 0 && (
@@ -83,7 +101,7 @@ export default function Header() {
                     <Link
                       to="/"
                       className="block py-2 px-4 hover:bg-gray-100"
-                      onClick={() => setLectureDropdownOpen(false)}
+                      onClick={() => _setLectureDropdownOpen(false)}
                     >
                       테스트
                     </Link>
@@ -102,7 +120,7 @@ export default function Header() {
               <li className="relative group">
                 <button
                   className="text-white hover:underline flex items-center"
-                  onClick={() => setAdminDropDownOpen(!isAdminDropDownOpen)}
+                  onClick={() => _setAdminDropDownOpen(!isAdminDropDownOpen)}
                 >
                   관리자&nbsp;
                   {isAdminDropDownOpen ? (
@@ -125,7 +143,7 @@ export default function Header() {
                           <Link
                             to={path}
                             className="block py-2 px-4 hover:bg-gray-100"
-                            onClick={() => setAdminDropDownOpen(false)}
+                            onClick={() => _setAdminDropDownOpen(false)}
                           >
                             {label}
                           </Link>
@@ -145,7 +163,7 @@ export default function Header() {
           <>
             <button
               className="text-white hover:underline"
-              onClick={() => setUserMenuOpen(!isUserMenuOpen)}
+              onClick={() => _setUserMenuOpen(!isUserMenuOpen)}
             >
               {Converter.getUserNameWithInfo(user)}
             </button>
@@ -156,7 +174,7 @@ export default function Header() {
                   <Link
                     to={`/user/${user.username}`}
                     className="block py-2 px-4 hover:bg-gray-100"
-                    onClick={() => setUserMenuOpen(false)}
+                    onClick={() => _setUserMenuOpen(false)}
                   >
                     내 정보
                   </Link>
